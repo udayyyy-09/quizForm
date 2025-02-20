@@ -1,4 +1,4 @@
-// src/utils/db.js
+
 export const initDB = () => {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open("QuizDB", 1);
@@ -26,7 +26,7 @@ export const initDB = () => {
     });
   };
   
-  // ✅ Function to Save Quiz Result
+  // Save Quiz Result
   export const addQuizResult = async (result) => {
     const db = await initDB();
     
@@ -47,7 +47,7 @@ export const initDB = () => {
     });
   };
   
-  // ✅ Function to Get All Quiz Results
+  // Get All Quiz Results
   export const getQuizResults = async () => {
     const db = await initDB();
     
@@ -61,7 +61,7 @@ export const initDB = () => {
     });
   };
   
-  // ✅ Function to Get Last N Quiz Results
+  // Function to Get Last N Quiz Results
   export const getLastResults = async (n) => {
     const db = await initDB();
     

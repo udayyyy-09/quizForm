@@ -3,10 +3,10 @@ import React from "react";
 export const QuestionCard = ({ question, options, handleAnswerClick, option, feedback, correctAnswer }) => {
   return (
     <div className="space-y-4 p-6 bg-white rounded-lg shadow-md">
-      {/* Display the Question */}
+      
       <h2 className="text-xl font-semibold text-gray-800">{question}</h2>
 
-      {/* Render Answer Options */}
+      
       {options?.map((opt, index) => (
         <button
           key={index}

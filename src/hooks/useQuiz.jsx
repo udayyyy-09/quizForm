@@ -12,9 +12,9 @@ export const useQuiz = () => {
   const [feedback, setFeedback] = useState(false);
   const [timeLeft, setTimeLeft] = useState(timeques);
   const [isTimerActive, setIsTimerActive] = useState(true);
-  const [startTime, setStartTime] = useState(Date.now()); // Track quiz start time
+  const [startTime, setStartTime] = useState(Date.now());
 
-  // Timer logic
+
   useEffect(() => {
     if (!isTimerActive || timeLeft <= 0) return;
 
@@ -25,13 +25,13 @@ export const useQuiz = () => {
     return () => clearInterval(timer);
   }, [timeLeft, isTimerActive]);
 
-  // Handle time running out
+
   const handleTimeout = () => {
     setIsTimerActive(false);
     setFeedback(true);
   };
 
-  // Handle answer selection
+
   const handleAnswerClick = (selectedOption) => {
     if (!feedback) {
       setOption(selectedOption);
@@ -40,7 +40,7 @@ export const useQuiz = () => {
     }
   };
 
-  // Move to the next question
+
   const handleNextQuestion = () => {
     console.log("Current Question Before Update:", currentQuestion);
 
@@ -49,8 +49,8 @@ export const useQuiz = () => {
     }
 
     if (currentQuestion + 1 < questions.length) {
-      setCurrentQuestion((prev) => prev + 1); // Functional update to avoid stale state
-      setAttempts((prev) => [...prev, option]); // Track selected answers
+      setCurrentQuestion((prev) => prev + 1); 
+      setAttempts((prev) => [...prev, option]); 
       setOption(null);
       setFeedback(false);
       setTimeLeft(timeques);
@@ -61,7 +61,7 @@ export const useQuiz = () => {
     }
   };
 
-  // Restart the quiz
+
   const restartQuiz = () => {
     setCurrentQuestion(0);
     setScore(0);

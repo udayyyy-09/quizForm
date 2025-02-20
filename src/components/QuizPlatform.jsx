@@ -104,18 +104,18 @@ const QuizPlatform = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-xl bg-white rounded-lg shadow-sm p-6">
+      <div className="w-full max-w-3xl bg-white rounded-lg shadow-sm p-6">
         {showScore ? (
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-2">Quiz Complete!</h2>
+            <h2 className="text-grey-300 text-3xl font-sans mb-2">🎉 Quiz Completed! 🎉</h2>
             <p className="text-lg mb-6">
-              Your score: {score} out of {questions.length}
+              Your score: <span className="font-bold text-blue-600">{score}</span> out of <span className="font-bold text-blue-600">{questions.length}</span>
             </p>
 
-            {/* ✅ Show Past Quiz Attempts */}
+            
             {attempts.length > 0 && (
               <div className="bg-gray-50 p-4 rounded-lg text-left">
-                <h3 className="font-semibold mb-3">Previous Attempts</h3>
+                <h3 className="font-semibold mb-3">📊 Previous Attempts</h3>
                 <div className="space-y-2">
                   {attempts.slice(-3).reverse().map((attempt, index) => (
                     <div key={index} className="flex justify-between items-center p-2 border-b">
@@ -131,16 +131,15 @@ const QuizPlatform = () => {
             )}
 
             <button
-              
               onClick={restartQuiz}
-              className="cursor-pointer w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition mt-4"
+              className="cursor-pointer w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition mt-4 transform hover:scale-105"
             >
-              Try Again
+              🔄 Try Again
             </button>
           </div>
         ) : (
           <>
-            {/* Progress & Timer */}
+           
             <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm text-gray-500">
@@ -153,14 +152,14 @@ const QuizPlatform = () => {
               </div>
             </div>
 
-            {/* Question & Options */}
+            
             <h2 className="text-lg font-medium mb-4">{questions[currentQuestion].question}</h2>
             <div className="space-y-2">
               {questions[currentQuestion].options.map((option, index) => (
                 <button
                   key={index}
                   onClick={() => handleAnswerClick(index)}
-                  disabled={selectedOption !== null || timeLeft === 0} // ✅ Prevents multiple selections
+                  disabled={selectedOption !== null || timeLeft === 0} // 
                   className={` w-full p-3 text-left rounded border ${
                     selectedOption !== null
                       ? index === questions[currentQuestion].correct
@@ -176,10 +175,10 @@ const QuizPlatform = () => {
               ))}
             </div>
 
-            {/* Show feedback after answering */}
+            
             {feedback && <div className="text-lg mt-3 font-semibold text-gray-700">{feedback}</div>}
 
-            {/* Next Question Button */}
+           
             {(selectedOption !== null || timeLeft === 0) && (
               <button
                 onClick={handleNextQuestion}
