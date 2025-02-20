@@ -4,12 +4,15 @@ import LandingPage from "./components/LandingPage";
 import QuizPlatform from './components/QuizPlatform';
 function App() {
   return (
-    <Router>
+    <><Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/quiz" element={<QuizPlatform />} /> 
       </Routes>
     </Router>
+    
+    </>
+    
   );
 }
 

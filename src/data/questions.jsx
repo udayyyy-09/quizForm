@@ -34,12 +34,7 @@ export const questions = [
       correct: 1,
       explanation: "Filtration is not the part of refining platform"
     },
-    {
-      id: 6,
-      question: "Which of the following is primarily used for structuring web pages?",
-      options: ["Python","Java","HTML","C++"],
-      correct: 2,
-      explanation: "HTML is knowns as basic layout of webpages"
-    }
+    
+    
   ];
   

@@ -37,27 +37,8 @@ const LandingPage = () => {
         <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-pink-200 opacity-40 blur-3xl"></div>
         <div className="absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-violet-200 opacity-40 blur-3xl"></div>
         <div className="absolute bottom-0 left-1/4 w-72 h-72 rounded-full bg-teal-200 opacity-40 blur-3xl"></div>
-        
-        {/* Floating question marks */}
-        {[...Array(8)].map((_, i) => {
-          const randomDelay = Math.random() * 5;
-          const randomDuration = 8 + Math.random() * 10;
-          return (
-            <div 
-              key={i}
-              className="absolute text-violet-300 opacity-30 text-6xl font-bold animate-float"
-              style={{
-                top: `${Math.random() * 90}%`,
-                left: `${Math.random() * 90}%`,
-                animationDelay: `${randomDelay}s`,
-                animationDuration: `${randomDuration}s`,
-                transform: `rotate(${Math.random() * 30 - 15}deg)`
-              }}
-            >
-              ?
-            </div>
-          );
-        })}
+      
+       
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen">
@@ -78,7 +59,7 @@ const LandingPage = () => {
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className={`bg-white/50 backdrop-blur-sm p-6 rounded-xl transition-all duration-300 cursor-pointer transform hover:scale-105 hover:bg-white/60 shadow-lg ${
+                className={`bg-white/50 backdrop-blur-sm p-6 rounded-xl transition-all duration-300 cursor-null transform hover:scale-105 hover:bg-white/60 shadow-lg ${
                   hoveredFeature === index ? 'bg-white/60 scale-105' : ''
                 }`}
                 onMouseEnter={() => setHoveredFeature(index)}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { questions } from "../data/questions";
-import { addQuizResult, getQuizResults } from "../utils/db";
-
+import { addQuizResult, getQuizResults } from "../utils/db"; 
 const QuizPlatform = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -44,8 +43,8 @@ const QuizPlatform = () => {
     if (index === questions[currentQuestion].correct) {
       setFeedback(
         <div>
-          <p className="text-rose-500 font-semibold">✅ Correct!</p>
-          <p className="text-violet-600 text-sm mt-1">ℹ️ {questions[currentQuestion].explanation}</p>
+          <p className="text-green-500 font-semibold"> Correct!</p>
+          <p className="text-white-600 text-sm mt-1">ℹ️ {questions[currentQuestion].explanation}</p>
         </div>
       );
       setScore((prevScore) => prevScore + 1);
@@ -125,10 +124,10 @@ const QuizPlatform = () => {
   const PreviousAttempts = () => (
     <div className="bg-white/70 backdrop-blur-sm p-4 rounded-lg text-left shadow-md mb-6">
       <div className="flex justify-between items-center mb-3">
-        <h3 className="font-semibold text-violet-700">📊 Previous Attempts</h3>
+        <h3 className="font-semibold text-black-700">📊 Previous Attempts</h3>
         <button 
           onClick={() => setShowHistory(false)} 
-          className="text-violet-500 hover:text-violet-700 text-sm"
+          className="text-black-500 text-sm cursor-pointer"
         >
           ✕ Close
         </button>
@@ -141,7 +140,7 @@ const QuizPlatform = () => {
                 <span className="text-violet-600">{formatDate(attempt.date)}</span>
               </div>
               <div className="flex items-center space-x-4">
-                <span className="text-rose-500 font-semibold">
+                <span className="text-green-500 font-semibold">
                   {attempt.score} / {attempt.totalQuestions}
                 </span>
                 <span className="font-semibold text-violet-600">
@@ -159,6 +158,7 @@ const QuizPlatform = () => {
   );
 
   return (
+    <>
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-100 via-violet-100 to-teal-100">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -170,10 +170,10 @@ const QuizPlatform = () => {
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         <div className="w-full max-w-3xl bg-white/50 backdrop-blur-sm rounded-xl shadow-lg p-6">
           {/* History button - visible when not showing score or history */}
-          {!showScore && !showHistory && attempts.length > 0 && (
+          {showScore && !showHistory && attempts.length > 0 && (
             <button
               onClick={() => setShowHistory(true)}
-              className="absolute top-4 right-4 bg-violet-100 hover:bg-violet-200 text-violet-700 px-3 py-1 rounded-full text-sm font-medium transition flex items-center"
+              className="cursor-pointer absolute top-4 right-4 bg-violet-100 hover:bg-violet-200 text-violet-700 px-3 py-1 rounded-full text-sm font-medium transition flex items-center"
             >
               <span className="mr-1">📊</span> History
             </button>
@@ -184,14 +184,14 @@ const QuizPlatform = () => {
           
           {showScore ? (
             <div className="text-center">
-              <h2 className="text-violet-700 text-3xl font-sans mb-2">🎉 Quiz Completed! 🎉</h2>
-              <p className="text-lg mb-6 text-violet-600">
+              <h2 className="text-black-700 text-3xl font-sans mb-2">🎉 Quiz Completed! 🎉</h2>
+              <p className="text-lg mb-6 text-black-600">
                 Your score: <span className="font-bold text-rose-500">{score}</span> out of <span className="font-bold text-rose-500">{questions.length}</span>
               </p>
 
               {attempts.length > 0 && (
                 <div className="bg-white/50 backdrop-blur-sm p-4 rounded-lg text-left">
-                  <h3 className="font-semibold mb-3 text-violet-700">📊 Previous Attempts</h3>
+                  <h3 className="font-semibold mb-3 text-grey-600"> Previous Attempts</h3>
                   <div className="space-y-2">
                     {attempts.slice(-3).reverse().map((attempt, index) => (
                       <div key={index} className="flex justify-between items-center p-2 border-b border-violet-200">
@@ -199,7 +199,7 @@ const QuizPlatform = () => {
                           <span className="text-violet-600">{formatDate(attempt.date)}</span>
                         </div>
                         <div className="flex items-center space-x-4">
-                          <span className="text-rose-500 font-semibold">
+                          <span className="text-green-500 font-semibold">
                             {attempt.score} / {attempt.totalQuestions}
                           </span>
                           <span className="font-semibold text-violet-600">
@@ -210,22 +210,22 @@ const QuizPlatform = () => {
                       </div>
                     ))}
                   </div>
-                  {attempts.length > 3 && (
+                  {/* {attempts.length > 3 && (
                     <button
                       onClick={() => setShowHistory(true)}
                       className="text-violet-600 hover:text-violet-800 underline text-sm mt-2"
                     >
                       View all attempts
                     </button>
-                  )}
+                  )} */}
                 </div>
               )}
 
               <button
                 onClick={restartQuiz}
-                className="cursor-pointer w-full py-3 bg-gradient-to-r from-rose-400 to-violet-400 text-white rounded-lg hover:from-rose-500 hover:to-violet-500 transition mt-4 transform hover:scale-105 shadow-lg shadow-violet-200"
+                className="cursor-pointer w-full py-3 bg-gradient-to-r from-rose-400 to-violet-400 text-white rounded-lg hover:from-rose-500 hover:to-violet-500 transition mt-4 transform hover:scale-105 shadow-lg shadow-violet-200 font-bold"
               >
-                🔄 Try Again
+                 Try Again
               </button>
             </div>
           ) : (
@@ -233,18 +233,18 @@ const QuizPlatform = () => {
               <>
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-violet-600">
+                    <span className="text-black-600">
                       Question {currentQuestion+1} of {questions.length}
                     </span>
-                    <span className="text-violet-600">⏳ Time Left: {timeLeft}s</span>
+                    <span className="text-black-600">⏳ Time Left: {timeLeft}s</span>
                   </div>
-                  <div className="w-full bg-violet-100 h-1 rounded-full">
-                    <div className="bg-gradient-to-r from-rose-400 to-violet-400 h-1 rounded-full transition-all duration-300" 
+                  <div className="w-full bg-white-600 h-1 rounded-full">
+                    <div className="bg-gradient-to-r from-blue-800 to-red-400 h-1 rounded-b-sm transition-all duration-300" 
                         style={{ width: `${(timeLeft / 30) * 100}%` }}></div>
                   </div>
                 </div>
 
-                <h2 className="text-lg font-medium mb-4 text-violet-700">{questions[currentQuestion].question}</h2>
+                <h2 className="text-lg font-medium mb-4 text-black-700">{questions[currentQuestion].question}</h2>
                 <div className="space-y-2">
                   {questions[currentQuestion].options.map((option, index) => (
                     <button
@@ -257,8 +257,8 @@ const QuizPlatform = () => {
                             ? "border-teal-400 bg-teal-50/50 text-teal-700"
                             : selectedOption === index
                             ? "border-rose-400 bg-rose-50/50 text-rose-700"
-                            : "border-violet-200 text-violet-600"
-                          : "border-violet-200 text-violet-600 hover:border-violet-400 hover:bg-white/50"
+                            : "border-violet-200 text-black-600"
+                          : "border-violet-200 text-black-600 hover:border-violet-400 hover:bg-white/50"
                       }`}
                     >
                       {option}
@@ -271,17 +271,20 @@ const QuizPlatform = () => {
                 {(selectedOption !== null || timeLeft === 0) && (
                   <button
                     onClick={handleNextQuestion}
-                    className="cursor-pointer w-full mt-4 py-2 bg-gradient-to-r from-rose-400 to-violet-400 text-white rounded-lg hover:from-rose-500 hover:to-violet-500 transition shadow-lg shadow-violet-200 hover:shadow-violet-300"
+                    className="cursor-pointer w-full mt-4 py-2 bg-gradient-to-r from-blue-400 to-violet-400 text-white rounded-lg hover:from-rose-500 hover:to-violet-500 transition shadow-lg shadow-violet-200 hover:shadow-violet-300"
                   >
                     {currentQuestion === questions.length - 1 ? "Finish Quiz" : "Next Question"}
                   </button>
                 )}
+                
               </>
             )
           )}
         </div>
       </div>
     </div>
+    
+    </>
   );
 };
 
