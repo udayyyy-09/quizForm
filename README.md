@@ -63,6 +63,16 @@ Steps to Run the App Locally
    # or
    yarn install
    ```
+   ```
+   npm install react-router-dom
+   # or
+   yarn install react-router-dom
+   ```
+   ```
+   npm install lucide-react
+   # or
+   yarn install lucide-react
+   ```
 3. Run the Development Server
 
    ```
