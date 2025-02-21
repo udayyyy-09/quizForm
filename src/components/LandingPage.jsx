@@ -74,10 +74,10 @@ const LandingPage = () => {
           
           <div className="flex justify-center w-full">
             <button
-              className="group bg-gradient-to-r from-rose-400 to-violet-400 text-white px-8 py-4 rounded-lg font-medium hover:from-rose-500 hover:to-violet-500 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-violet-200 hover:shadow-violet-300 mx-auto hover:scale-105"
+              className="cursor-pointer group bg-gradient-to-r from-rose-400 to-violet-400 text-white px-8 py-4 rounded-lg font-medium hover:from-rose-500 hover:to-violet-500 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-violet-200 hover:shadow-violet-300 mx-auto hover:scale-105"
               onClick={() => navigate('/quiz')}
             >
-              Start Your Journey
+              Start Quiz
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

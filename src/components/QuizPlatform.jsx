@@ -12,6 +12,7 @@ const QuizPlatform = () => {
   const [questionResponses, setQuestionResponses] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
 
+
   useEffect(() => {
     const fetchHistory = async () => {
       const history = await getQuizResults();
@@ -283,7 +284,6 @@ const QuizPlatform = () => {
         </div>
       </div>
     </div>
-    
     </>
   );
 };
